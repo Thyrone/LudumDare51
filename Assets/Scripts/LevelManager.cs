@@ -16,7 +16,8 @@ public class LevelManager : MonoBehaviour
     public bool ChangeColor=true;
     bool MusicLauch=false;
 
-    static Transform spawnPlayer;
+    static Vector3 spawnPlayerPos;
+    static Quaternion spawnPlayerRot;
     static GameObject Player;
     static PlayerMovementAdvanced playerMovementAdvanced;
     static PlayerCam playerCam;
@@ -37,11 +38,11 @@ public class LevelManager : MonoBehaviour
     void Start()
     {
         playerMovementAdvanced = FindObjectOfType<PlayerMovementAdvanced>();
-        playerCam = FindObjectOfType<PlayerCam>();
+        playerCam =  FindObjectOfType<PlayerCam>();
         throwing = FindObjectOfType<ThrowingTutorial>();
-        Player = playerMovementAdvanced.gameObject;
-        spawnPlayer = Player.transform;
-
+        Player = GameObject.FindGameObjectWithTag("Player");
+        spawnPlayerPos = Player.transform.position;
+        spawnPlayerRot = Player.transform.rotation;
         baseTrowingObject = throwing.totalThrows;
 
         cam.backgroundColor = color1;
@@ -49,17 +50,18 @@ public class LevelManager : MonoBehaviour
     }
 
     public static void Retry()
-    {/*
-        Player.transform.position = spawnPlayer.position;
-        throwing.totalThrows = baseTrowingObject;*/
+    {
+        Player.transform.position = spawnPlayerPos;
+        Player.transform.rotation= spawnPlayerRot;
+        throwing.totalThrows = baseTrowingObject;
         playerMovementAdvanced.Locked = false;
         playerCam.Locked = false;
     }
 
     public static void Dead()
-    {/*
+    {
         playerMovementAdvanced.Locked = true;
-        playerCam.Locked = true;*/
+        playerCam.Locked = true;
     }   
 
     IEnumerator ChangeColorTime()

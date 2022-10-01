@@ -27,6 +27,7 @@ public class StartRun : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            StopAllCoroutines();
             RetryUI.SetActive(false); 
             LevelManager.Retry();
             StartCoroutine(StartTimer(10));
