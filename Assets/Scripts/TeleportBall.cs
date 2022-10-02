@@ -14,7 +14,7 @@ public class TeleportBall : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // check if you hit an enemy
-        if (collision.gameObject.tag == "Paintable")
+        if (collision.gameObject.tag == "Teleportable")
         {
             // destroy projectile
             player.transform.position = gameObject.transform.position;

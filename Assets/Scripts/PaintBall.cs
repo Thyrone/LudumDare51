@@ -18,6 +18,7 @@ public class PaintBall : MonoBehaviour
         if(collision.gameObject.tag=="Paintable")
         {
             // destroy projectile
+            collision.gameObject.GetComponent<Renderer>().material.SetColor("_BaseColor", LevelManager.BallColor);
             collision.gameObject.GetComponent<Renderer>().material.color = LevelManager.BallColor;
             Destroy(gameObject);
            

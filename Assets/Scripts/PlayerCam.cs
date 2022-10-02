@@ -14,7 +14,7 @@ public class PlayerCam : MonoBehaviour
     float xRotation;
     float yRotation;
 
-    public bool Locked = true;
+    public bool Locked = false;
 
     private void Start()
     {
@@ -24,11 +24,14 @@ public class PlayerCam : MonoBehaviour
 
     private void Update()
     {
-        if(!Locked)
+        float mouseX;
+        float mouseY;
+
+        mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
+        mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
+
+        if (!Locked)
         {
-            // get mouse input
-            float mouseX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * sensX;
-            float mouseY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * sensY;
 
             yRotation += mouseX;
 
@@ -38,8 +41,11 @@ public class PlayerCam : MonoBehaviour
             // rotate cam and orientation
             camHolder.rotation = Quaternion.Euler(xRotation, yRotation, 0);
             orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
         }
         
+        
+
     }
 
     public void DoFov(float endValue)

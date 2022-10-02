@@ -5,18 +5,23 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     Material mat;
-   Collider col;
+    Collider col;
 
     void Start()
     {
         mat = GetComponent<Renderer>().material;
         col = GetComponent<Collider>();
+
+        mat.SetColor("_BaseColor", Random.Range(0, 2) == 1 ? LevelManager.BallColor : LevelManager.currentColor);
+        
+
+        //mat.color = Random.Range(0, 2) == 1 ? LevelManager.BallColor : LevelManager.currentColor;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(mat.color==LevelManager.currentColor)
+        if (mat.GetColor("_BaseColor")== LevelManager.currentColor)
         {
             col.isTrigger = true;
         }else
@@ -30,7 +35,8 @@ public class PlatformManager : MonoBehaviour
         if(other.tag=="Ball")
         {
             col.isTrigger = false;
-            GetComponent<Renderer>().material.color = LevelManager.BallColor;
+            mat.SetColor("_BaseColor", LevelManager.BallColor);
+           // mat.color = LevelManager.BallColor;
             Destroy(other);
         }
     }

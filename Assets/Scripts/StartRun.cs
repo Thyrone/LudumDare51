@@ -10,30 +10,23 @@ public class StartRun : MonoBehaviour
     public GameObject CoundDownUI;
     public GameObject RetryUI;
     public TMP_Text TimerText;
-
+    public float MaxtimerValue=10;
     private void Start()
     {
         RetryUI.SetActive(false);
-        CoundDownUI.SetActive(true);
-        StartCoroutine(StartCountdown(3));
+        CoundDownUI.SetActive(false);
+        StartCoroutine(StartTimer());
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            StartCoroutine(StartCountdown(3));
-        }
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             StopAllCoroutines();
             RetryUI.SetActive(false); 
             LevelManager.Retry();
-            StartCoroutine(StartTimer(10));
-            
+            StartCoroutine(StartTimer());
         }
-
     }
 
     public IEnumerator StartCountdown(float countdownValue)
@@ -49,10 +42,10 @@ public class StartRun : MonoBehaviour
         }
         CoundDownUI.SetActive(false);
         LevelManager.Retry();
-        StartCoroutine(StartTimer(10));
+        StartCoroutine(StartTimer());
     }
 
-    public IEnumerator StartTimer(float MaxtimerValue = 10)
+    public IEnumerator StartTimer()
     {
         float timerValue = 0;
         while (timerValue < MaxtimerValue)

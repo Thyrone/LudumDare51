@@ -69,7 +69,7 @@ public class PlayerMovementAdvanced : MonoBehaviour
     public bool sliding;
     public bool crouching;
     public bool wallrunning;
-    public bool Locked = true;
+    public bool Locked = false;
 
     public TextMeshProUGUI text_speed;
     public TextMeshProUGUI text_mode;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Paintable
   - Ball
+  - Teleportable
+  - music
   layers:
   - Default
   - TransparentFX
