@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     bool MusicLauch=false;
 
     static Vector3 spawnPlayerPos;
-    static Quaternion spawnPlayerRot;
+    static Vector3 spawnPlayerRot;
     static GameObject Player;
     static PlayerMovementAdvanced playerMovementAdvanced;
     static PlayerCam playerCam;
@@ -42,7 +42,6 @@ public class LevelManager : MonoBehaviour
         throwing = FindObjectOfType<ThrowingTutorial>();
         Player = GameObject.FindGameObjectWithTag("Player");
         spawnPlayerPos = Player.transform.position;
-        spawnPlayerRot = Player.transform.rotation;
         baseTrowingObject = throwing.totalThrows;
 
         cam.backgroundColor = color1;
@@ -52,7 +51,6 @@ public class LevelManager : MonoBehaviour
     public static void Retry()
     {
         Player.transform.position = spawnPlayerPos;
-        Player.transform.rotation= spawnPlayerRot;
         throwing.totalThrows = baseTrowingObject;
         playerMovementAdvanced.Locked = false;
         playerCam.Locked = false;
