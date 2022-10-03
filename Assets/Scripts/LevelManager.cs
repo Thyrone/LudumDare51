@@ -135,7 +135,7 @@ public class LevelManager : MonoBehaviour
         while (ChangeColor)
         {
             if(cam!=null)
-            {/*
+            {
                 if (cam.backgroundColor == color1)
                 {
                     cam.backgroundColor = color2;
@@ -147,7 +147,7 @@ public class LevelManager : MonoBehaviour
                     cam.backgroundColor = color1;
                     currentColor = color1;
                     BallColor = color2;
-                }*/
+                }
                 if (!MusicLauch)
                 {
                     MusicLauch = true;
