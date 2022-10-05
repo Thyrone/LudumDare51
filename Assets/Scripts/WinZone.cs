@@ -32,6 +32,8 @@ public class WinZone : MonoBehaviour
             }
             WinHighScore.text = "Highscore : " + PlayerPrefs.GetFloat(SceneManager.GetActiveScene().name).ToString("F2") + "s";
             Debug.Log("CC");
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else if (other.tag == "Ball")
             Destroy(other);
